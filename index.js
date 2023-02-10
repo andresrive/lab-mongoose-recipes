@@ -55,11 +55,9 @@ mongoose
     return Recipe.insertMany(data)
   })
   .then(recipes => {
-    let titles
-    for (let i = 0; i < recipes.length; i++) {
-      titles = titles + ", " + recipes[i].title
-    }
-    console.log("Console.log de insertMany", titles)
+    recipes.forEach((res) => {
+      console.log(res.title)
+    })
   })
   .then(() => {
     return Recipe.findOneAndUpdate({ title: "Rigatoni alla Genovese" }, { duration: 100 }, { new: true })
